@@ -7,20 +7,18 @@ const generateTarget = () => {
     return Math.floor(Math.random() * 10);
 };
 
-const compareGuesses = (humanGuess, computerGuess, targetNumber) => {
-    if (Math.abs(targetNumber - humanGuess) <= Math.abs(targetNumber - computerGuess)) {
-        return true;
-    } else {
-        return false;
-    };
+const compareGuesses = (humanGuess, computerGuess, targetGuess) => {
+  const humanDifference = Math.abs(targetGuess - humanGuess)
+  const computerDifference = Math.abs(targetGuess - computerGuess)
+  return humanDifference <= computerDifference;
 };
 
 const updateScore = winner => {
-    if (compareGuess = true) {
+    if (winner === 'human') {
         humanScore++;
-    } else {
+      } else if (winner === 'computer') {
         computerScore++;
-    };
+      }
 };
 
 const advanceRound = () => currentRoundNumber++;

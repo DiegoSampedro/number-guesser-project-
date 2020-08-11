@@ -73,6 +73,17 @@ nextRoundButton.addEventListener('click', () => {
 const addButton = document.getElementById('add');
 const subtractButton = document.getElementById('subtract');
 
+const handleValueChange = value => {
+  if (value > 0 && value < 9) {
+    subtractButton.removeAttribute('disabled');
+    addButton.removeAttribute('disabled');
+  } else if (value = 9) {
+    addButton.setAttribute('disabled', true);
+  } else if (value <= 0) {
+    subtractButton.setAttribute('disabled', true);
+  }
+}
+
 addButton.addEventListener('click', () => {
   humanGuessInput.value = +humanGuessInput.value + 1;
   handleValueChange(humanGuessInput.value);
@@ -83,16 +94,7 @@ subtractButton.addEventListener('click', () => {
   handleValueChange(humanGuessInput.value);
 });
 
-const handleValueChange = value => {
-  if (value > 0 && value <= 9) {
-    subtractButton.removeAttribute('disabled');
-    addButton.removeAttribute('disabled');
-  } else if (value > 9) {
-    addButton.setAttribute('disabled', true);
-  } else if (value <= 0) {
-    subtractButton.setAttribute('disabled', true);
-  }
-}
+
 
 humanGuessInput.addEventListener('input', function(e) {
   handleValueChange(e.target.value);
